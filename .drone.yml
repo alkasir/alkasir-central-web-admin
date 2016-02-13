@@ -1,0 +1,17 @@
+build:
+  image: alkasir-centraladmin-builder
+  commands:
+    - ./ci.sh runci
+  environment:
+    - ALKASIR_PGCONN=user=alkasir_central host=localhost password=alkasir_central dbname=alkasir_central sslmode=disable
+
+cache:
+  mount:
+    - ../pip-cache
+
+compose:
+  database:
+    image: postgres
+    environment:
+      - POSTGRES_USER=alkasir_central
+      - POSTGRES_PASSWORD=alkasir_central
