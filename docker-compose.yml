@@ -1,0 +1,27 @@
+app:
+  build: .
+  tty: true
+  stdin_open: true
+  command: ./manage.py runserver 0.0.0.0:8000
+  restart: on-failure
+  volumes:
+    - .:/centraladmin/
+  ports:
+    - "8000:8000"
+  external_links:
+    - centraldb_db_1:db
+  env_file:
+    - ./db.env
+
+manage:
+  build: .
+  tty: true
+  stdin_open: true
+  external_links:
+    - centraldb_db_1:db
+  volumes:
+    - .:/centraladmin
+  command: help
+  entrypoint: /centraladmin/manage.py
+  env_file:
+    - ./db.env
