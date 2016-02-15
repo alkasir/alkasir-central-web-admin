@@ -4,6 +4,7 @@ ENV PYTHONUNBUFFERED 1
 workdir /centraladmin/
 
 add requirements*.txt /centraladmin/
+run pip install --no-cache-dir -r requirements-dev.txt
 run pip install --no-cache-dir -r requirements-dev-extra.txt
 
 add ./ /centraladmin/
