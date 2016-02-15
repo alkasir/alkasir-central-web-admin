@@ -12,6 +12,7 @@ buildimage() {
 # runci is used inside the docker container above when running a build.
 runci() {
   set -x
+  pip install --cache-dir=../pip-cache flake8
   flake8 --config=tox.ini
   pip install --cache-dir=../pip-cache -r requirementsgf.txt
   python manage.py test
