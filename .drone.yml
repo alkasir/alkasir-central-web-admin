@@ -1,5 +1,5 @@
 build:
-  image: alkasir-centraladmin-builder
+  image: python:3.5
   commands:
     - ./ci.sh runci
   environment:
